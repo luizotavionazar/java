@@ -61,30 +61,6 @@ public class Pizza {
                     System.out.println("Ingredientes: Mussarela, Chocolate Branco e Café Granulado");
                     func.linha();
                     func.spc();
-                    do {
-                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    while (opc!=0&&opc!=1) {
-                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
-                            System.out.println("Opção Inválida!");}
-                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}}
                     break;
                 case 2:
                     func.linha();
@@ -93,30 +69,6 @@ public class Pizza {
                     System.out.println("Ingredientes: Molho de Tomate, Mussarela, Calabresa, Cebola, Orégano e Muita Pimenta");
                     func.linha();
                     func.spc();
-                    do {
-                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    while (opc!=0&&opc!=1) {
-                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
-                            System.out.println("Opção Inválida!");}
-                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}}
                     break;
                 case 3:
                     func.linha();
@@ -125,30 +77,6 @@ public class Pizza {
                     System.out.println("Ingredientes: Molho de Tomate Rústico, Mussarela, Carne de Cobra, Cebola e Orégano");
                     func.linha();
                     func.spc();
-                    do {
-                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    while (opc!=0&&opc!=1) {
-                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
-                            System.out.println("Opção Inválida!");}
-                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}}
                     break;
                 case 4:
                     func.linha();
@@ -157,67 +85,43 @@ public class Pizza {
                     System.out.println("Ingredientes: Molho, Mussarela, Calabresa, Tomate, Pimentão, Cogumelos, Cebola e Orégano");
                     func.linha();
                     func.spc();
-                    do {
-                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    while (opc!=0&&opc!=1) {
-                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
-                            System.out.println("Opção Inválida!");}
-                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}}
                     break;
-                    case 5:
+                case 5:
                     func.linha();
                     System.out.println("Pizza.......: FRANGO");
                     System.out.println("Valor.......: R$17,90");
                     System.out.println("Ingredientes: Massa de Frango com Catupiry");
                     func.linha();
                     func.spc();
-                    do {
-                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    while (opc!=0&&opc!=1) {
-                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
-                            System.out.println("Opção Inválida!");}
-                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                        try {
-                            opc= in.nextInt();
-                            func.spc();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}}
                     break;
                 default:
                     func.spc();
                     System.out.println("Opção inválida!");
                     break;}
+            do {
+                System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
+                try {
+                    opc= in.nextInt();
+                    func.spc();
+                    control1= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control1=false;}} while (!control1);
+            while (opc!=0&&opc!=1) {
+                if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
+                    System.out.println("Opção Inválida!");}
+                    System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
+                try {
+                    opc= in.nextInt();
+                    func.spc();
+                    control1= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control1=false;}}
             if (opc==0) {
                 control1= false;}}
         
