@@ -14,8 +14,8 @@ public class Pizza {
         func.menu_pizza();
         func.spc();
 
-        do { //Inicia o programa
-            System.out.println("Deseja visualizar os ingredientes ou iniciar o pedido?");
+        System.out.println("Deseja visualizar os ingredientes ou iniciar o pedido?"); //Inicia o programa
+        do {
             System.out.print("   [1]Ver Ingredientes | [0]Iniciar Pedido : ");
             try {
                 opc= in.nextInt();
@@ -23,7 +23,7 @@ public class Pizza {
                 control1= true;
             } catch (InputMismatchException e) {
                 func.spc();
-                System.out.println("Informe um valor válido!");
+                System.out.println("              Informe um valor válido!");
                 in.next();
                 control1=false;}} while (!control1);
         while (opc!=0&&opc!=1) {
@@ -44,71 +44,73 @@ public class Pizza {
 
         while (control1) { //Visualização das Pizzas
             do {
-                System.out.print("Código da Pizza: ");
-                try {
-                    pizza= in.nextInt();
-                    control1= true;
-                } catch (InputMismatchException e) {
-                    func.spc();
-                    System.out.println("Informe um valor válido!");
-                    in.next();
-                    control1=false;}} while (!control1);
-            switch (pizza) {
-                case 1:
-                    func.linha();
-                    System.out.println("Pizza.......: JAVA");
-                    System.out.println("Valor.......: R$75,90");
-                    System.out.println("Ingredientes: Mussarela, Chocolate Branco e Café Granulado");
-                    func.linha();
-                    func.spc();
-                    break;
-                case 2:
-                    func.linha();
-                    System.out.println("Pizza.......: C++");
-                    System.out.println("Valor.......: R$88,15");
-                    System.out.println("Ingredientes: Molho de Tomate, Mussarela, Calabresa, Cebola, Orégano e Muita Pimenta");
-                    func.linha();
-                    func.spc();
-                    break;
-                case 3:
-                    func.linha();
-                    System.out.println("Pizza.......: PYTHON");
-                    System.out.println("Valor.......: R$79,90");
-                    System.out.println("Ingredientes: Molho de Tomate Rústico, Mussarela, Carne de Cobra, Cebola e Orégano");
-                    func.linha();
-                    func.spc();
-                    break;
-                case 4:
-                    func.linha();
-                    System.out.println("Pizza.......: SQL");
-                    System.out.println("Valor.......: R$90,87");
-                    System.out.println("Ingredientes: Molho, Mussarela, Calabresa, Tomate, Pimentão, Cogumelos, Cebola e Orégano");
-                    func.linha();
-                    func.spc();
-                    break;
-                case 5:
-                    func.linha();
-                    System.out.println("Pizza.......: FRANGO");
-                    System.out.println("Valor.......: R$17,90");
-                    System.out.println("Ingredientes: Massa de Frango com Catupiry");
-                    func.linha();
-                    func.spc();
-                    break;
-                default:
-                    func.spc();
-                    System.out.println("Opção inválida!");
-                    break;}
-            do {
-                System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
-                try {
-                    opc= in.nextInt();
-                    func.spc();
-                    control1= true;
-                } catch (InputMismatchException e) {
-                    func.spc();
-                    System.out.println("Informe um valor válido!");
-                    in.next();
-                    control1=false;}} while (!control1);
+                do {
+                    System.out.print("Código da Pizza: ");
+                    try {
+                        pizza= in.nextInt();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);
+                switch (pizza) {
+                    case 1:
+                        func.linha();
+                        System.out.println("Pizza.......: JAVA");
+                        System.out.println("Valor.......: R$75,90");
+                        System.out.println("Ingredientes: Mussarela, Chocolate Branco e Café Granulado");
+                        func.linha();
+                        func.spc();
+                        break;
+                    case 2:
+                        func.linha();
+                        System.out.println("Pizza.......: C++");
+                        System.out.println("Valor.......: R$88,15");
+                        System.out.println("Ingredientes: Molho de Tomate, Mussarela, Calabresa, Cebola, Orégano e Muita Pimenta");
+                        func.linha();
+                        func.spc();
+                        break;
+                    case 3:
+                        func.linha();
+                        System.out.println("Pizza.......: PYTHON");
+                        System.out.println("Valor.......: R$79,90");
+                        System.out.println("Ingredientes: Molho de Tomate Rústico, Mussarela, Carne de Cobra, Cebola e Orégano");
+                        func.linha();
+                        func.spc();
+                        break;
+                    case 4:
+                        func.linha();
+                        System.out.println("Pizza.......: SQL");
+                        System.out.println("Valor.......: R$90,87");
+                        System.out.println("Ingredientes: Molho, Mussarela, Calabresa, Tomate, Pimentão, Cogumelos, Cebola e Orégano");
+                        func.linha();
+                        func.spc();
+                        break;
+                    case 5:
+                        func.linha();
+                        System.out.println("Pizza.......: FRANGO");
+                        System.out.println("Valor.......: R$17,90");
+                        System.out.println("Ingredientes: Massa de Frango com Catupiry");
+                        func.linha();
+                        func.spc();
+                        break;
+                    default:
+                        func.spc();
+                        System.out.println("Opção inválida!");
+                        control1= false;
+                        break;}} while (!control1);
+                do {
+                    System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
+                    try {
+                        opc= in.nextInt();
+                        func.spc();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);
             while (opc!=0&&opc!=1) {
                 if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
                     System.out.println("Opção Inválida!");}
@@ -159,8 +161,16 @@ public class Pizza {
             
             if (opc==0){ // Pizza Inteira
                 do {
-                    System.out.print("Informe o Código da Pizza desejada: ");
-                    inteira[i]= in.nextInt();
+                    do {
+                        System.out.print("Informe o Código da Pizza desejada: ");
+                        try {
+                            inteira[i]= in.nextInt();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}} while (!control1);
                     switch (inteira[i]) { // Atribuição de valores
                         case 1:
                             valor_p[i]= 75.90;
@@ -182,8 +192,8 @@ public class Pizza {
                             control1= true;
                             break;   
                         default:
-                            System.out.println("Opção Inválida!");
                             func.spc();
+                            System.out.println("Opção Inválida!");
                             control1= false;
                             break;}} while (!control1);
             do {
