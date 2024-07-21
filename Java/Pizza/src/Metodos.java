@@ -24,6 +24,8 @@ public class Metodos {
         System.out.println("|    3    |  PYTHON |     R$79,90     |   R$39,95    |");
         System.out.println("|---------+---------+-----------------+--------------|");
         System.out.println("|    4    |   SQL   |     R$90,87     |   R$45,435   |");
+        System.out.println("|---------+---------+-----------------+--------------|");
+        System.out.println("|    5    |  FRANGO |     R$17,90     |   R$ 8,95    |");
         System.out.println("======================================================");}
 
     public void menu_bebidas() {

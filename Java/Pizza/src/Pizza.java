@@ -182,6 +182,38 @@ public class Pizza {
                             in.next();
                             control1=false;}}
                     break;
+                    case 5:
+                    func.linha();
+                    System.out.println("Pizza.......: FRANGO");
+                    System.out.println("Valor.......: R$17,90");
+                    System.out.println("Ingredientes: Massa de Frango com Catupiry");
+                    func.linha();
+                    func.spc();
+                    do {
+                        System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
+                        try {
+                            opc= in.nextInt();
+                            func.spc();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}} while (!control1);
+                    while (opc!=0&&opc!=1) {
+                        if (control1) { //Necessário incluir o if para que não seja repetido o "Opção inválida" em seguida do "Informe um valor válido"
+                            System.out.println("Opção Inválida!");}
+                            System.out.print("Visualizar outra Pizza? [1]Sim | [0]Iniciar Pedido ");
+                        try {
+                            opc= in.nextInt();
+                            func.spc();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}}
+                    break;
                 default:
                     func.spc();
                     System.out.println("Opção inválida!");
@@ -196,19 +228,84 @@ public class Pizza {
             func.pontos();
             System.out.println("-----Item "+j);
             func.spc();
-            System.out.print("Deseja a Pizza Inteira ou Meia? [0]Inteira | [1]Meia ");
-            opc= in.nextInt();
-            func.spc();
+            do {
+                System.out.print("Deseja a Pizza Inteira ou Meia? [0]Inteira | [1]Meia ");
+                try {
+                    opc= in.nextInt();
+                    func.spc();
+                    control1= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control1=false;}} while (!control1);
             while (opc!=0&&opc!=1) {
                 System.out.println("Opção Inválida!");
-                System.out.print("Deseja a Pizza Inteira ou Meia? [0]Inteira | [1]Meia ");
-                opc= in.nextInt();
-                func.spc();}
-            if (opc==1) {
                 do {
-                    System.out.print("Informe o Código da Pizza da 1º metade: ");
-                    meia1[i]= in.nextInt();
-                    switch (meia1[i]) {
+                    System.out.print("Deseja a Pizza Inteira ou Meia? [0]Inteira | [1]Meia ");
+                    try {
+                        opc= in.nextInt();
+                        func.spc();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);}
+            
+            if (opc==0){ // Pizza Inteira
+                do {
+                    System.out.print("Informe o Código da Pizza desejada: ");
+                    inteira[i]= in.nextInt();
+                    switch (inteira[i]) { // Atribuição de valores
+                        case 1:
+                            valor_p[i]= 75.90;
+                            control1= true;
+                            break;
+                        case 2:
+                            valor_p[i]= 88.15;
+                            control1= true;
+                            break;
+                        case 3:
+                            valor_p[i]= 79.90;
+                            control1= true;
+                            break;
+                        case 4:
+                            valor_p[i]= 90.87;
+                            control1= true;
+                        case 5:
+                            valor_p[i]= 17.90;
+                            control1= true;
+                            break;   
+                        default:
+                            System.out.println("Opção Inválida!");
+                            func.spc();
+                            control1= false;
+                            break;}} while (!control1);
+            do {
+                System.out.print("Quantidade: ");
+                try {
+                    qtd_p[i]= in.nextInt();
+                    control1= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control1=false;}} while (!control1);}
+
+            else { //Pizza Meia
+                do {
+                    do {
+                        System.out.print("Informe o Código da Pizza da 1º metade: ");
+                        try {
+                            meia1[i]= in.nextInt();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}} while (!control1);
+                    switch (meia1[i]) { // Atribuição de valores
                         case 1:
                             valor_p[i]= 37.95;
                             control1= true;
@@ -225,15 +322,27 @@ public class Pizza {
                             valor_p[i]= 45.435;
                             control1= true;
                             break;   
+                        case 5:
+                            valor_p[i]= 8.95;
+                            control1= true;
+                            break;   
                         default:
                             func.spc();
                             System.out.println("Opção Inválida!");
                             control1= false;
                             break;}} while (!control1);
                 do {
-                    System.out.print("Informe o Código da Pizza da 2º metade: ");
-                    meia2[i]= in.nextInt();
-                    switch (meia2[i]) {
+                    do {
+                        System.out.print("Informe o Código da Pizza da 2º metade: ");
+                        try {
+                            meia2[i]= in.nextInt();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}} while (!control1);
+                    switch (meia2[i]) { // Atribuição de valores
                         case 1:
                             valor_p[i]= valor_p[i]+37.95;
                             control1= true;
@@ -250,6 +359,10 @@ public class Pizza {
                             valor_p[i]= valor_p[i]+45.435;
                             control1= true;
                             break;   
+                        case 5:
+                            valor_p[i]= 8.95;
+                            control1= true;
+                            break;   
                         default:
                             func.spc();
                             System.out.println("Opção Inválida!");
@@ -265,52 +378,33 @@ public class Pizza {
                         System.out.println("Informe um valor válido!");
                         in.next();
                         control1=false;}} while (!control1);}
-                else if (opc==0){
-                    do {
-                        System.out.print("Informe o Código da Pizza desejada: ");
-                        inteira[i]= in.nextInt();
-                        switch (inteira[i]) {
-                            case 1:
-                                valor_p[i]= 75.90;
-                                control1= true;
-                                break;
-                            case 2:
-                                valor_p[i]= 88.15;
-                                control1= true;
-                                break;
-                            case 3:
-                                valor_p[i]= 79.90;
-                                control1= true;
-                                break;
-                            case 4:
-                                valor_p[i]= 90.87;
-                                control1= true;
-                            break;   
-                            default:
-                                System.out.println("Opção Inválida!");
-                                func.spc();
-                                control1= false;
-                                break;}} while (!control1);
+                
+            func.spc();
+            func.linha();
+            func.spc();
+            do {    //Avanço de Item - Selecionar outra pizza
+                System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
+                try {
+                    opc= in.nextInt();
+                    control1= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control1=false;}} while (!control1);
+            while (opc!=0&&opc!=1) {
+                func.spc();
+                System.out.println("Opção Inválida!");
                 do {
-                    System.out.print("Quantidade: ");
+                    System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
                     try {
-                        qtd_p[i]= in.nextInt();
+                        opc= in.nextInt();
                         control1= true;
                     } catch (InputMismatchException e) {
                         func.spc();
                         System.out.println("Informe um valor válido!");
                         in.next();
                         control1=false;}} while (!control1);}
-            func.spc();
-            func.linha();
-            func.spc();
-            System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
-            opc= in.nextInt();
-            while (opc!=0&&opc!=1) {
-                System.out.println("Opção Inválida!");
-                System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
-                opc= in.nextInt();
-                func.spc();}
             if (opc==0) {
                 control1= false;
                 control2= true;
