@@ -34,11 +34,11 @@ public class Metodos {
         System.out.println("======================================================");
         System.out.println("|   CÓDIGO  |           BEBIDA           |   VALOR   |");
         System.out.println("|====================================================|");
-        System.out.println("|    303    |            Água            |  R$5,00   |");
+        System.out.println("|    303    |            ÁGUA            |  R$5,00   |");
         System.out.println("|-----------+----------------------------+-----------|");
-        System.out.println("|    304    |      Suco de Laranja       |  R$10,00  |");
+        System.out.println("|    304    |      SUCO DE LARANJA       |  R$10,00  |");
         System.out.println("|-----------+----------------------------+-----------|");
-        System.out.println("|    310    |    Refrigerante normal     |  R$12,00  |");
+        System.out.println("|    310    |    REFRIGERANTE NORMAL     |  R$12,00  |");
         System.out.println("|-----------+----------------------------+-----------|");
-        System.out.println("|    315    |  Refrigerante zero açucar  |  R$12,00  |");
+        System.out.println("|    315    |  REFRIGERANTE ZERO AÇUCAR  |  R$12,00  |");
         System.out.println("======================================================");}}
