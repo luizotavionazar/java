@@ -364,7 +364,6 @@ public class Pizza {
                 func.menu_bebidas();}}
             
             while (control1&&j<=10) { // Selecionando as bebidas do pedido
-                func.spc();
                 func.pontos();
                 System.out.println("-----Item "+j);
                 func.spc();
