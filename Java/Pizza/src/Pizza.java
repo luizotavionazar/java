@@ -321,137 +321,169 @@ public class Pizza {
                         control1=false;}} while (!control1);}
             if (opc==0) {
                 control1= false;
-                control2= true;
                 func.spc();
-                func.linhad();
-                func.spc();}
-            i++; j++;}
+                func.linhad();}
+            i++; j++;
+            func.spc();}
 
-        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10];
-
+        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10]; //Avanço de item - Incluir bebidas
         while (control2) {
-            System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não "); //Incluir bebidas no pedido
-            opc= in.nextInt();
-            while (opc!=0|opc!=1) {
+            do {
+                System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não "); 
+                try {
+                    opc= in.nextInt();
+                    control2= true;
+                } catch (InputMismatchException e) {
+                    func.spc();
+                    System.out.println("Informe um valor válido!");
+                    in.next();
+                    control2=false;}} while (!control2);
+            while (opc!=0&&opc!=1) {
+                func.spc();
                 System.out.println("Opção Inválida!");
-                System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não ");
-                opc= in.nextInt();
-                func.spc();}
+                do {
+                    System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não ");
+                    try {
+                        opc= in.nextInt();
+                        control2= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control2=false;}} while (!control2);}
             func.spc();
-            if (opc==1) {
-                control1= true;}
-            
-            func.menu_bebidas();
+            if (opc==0) {
+                control1= false;
+                control2= false;}
+            else {
+                control1= true;
+                control2= false;
+                func.menu_bebidas();}}
             
             while (control1) { // Selecionando as bebidas do pedido
                 func.spc();
-                func.linhad();
+                func.pontos();
                 System.out.println("-----Item "+j);
                 func.spc();
-                System.out.print("Informe o código da Bebida desejada: ");
-                bebida[i]= in.nextInt();
-                switch (bebida[i]) {
-                    case 303:
+                do {
                     do {
-                        System.out.print("Quantidade: ");
+                        System.out.print("Informe o código da Bebida desejada: ");
                         try {
-                            qtd_p[i]= in.nextInt();
+                            bebida[i]= in.nextInt();
                             control1= true;
                         } catch (InputMismatchException e) {
                             func.spc();
                             System.out.println("Informe um valor válido!");
                             in.next();
                             control1=false;}} while (!control1);
-                        valor_b[i]= 5;
-                        func.spc();
-                        func.linha();
-                        func.spc();
-                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
+                    switch (bebida[i]) {
+                        case 303:
+                        do {
+                            System.out.print("Quantidade: ");
+                            try {
+                                qtd_b[i]= in.nextInt();
+                                control1= true;
+                            } catch (InputMismatchException e) {
+                                func.spc();
+                                System.out.println("Informe um valor válido!");
+                                in.next();
+                                control1=false;}} while (!control1);
+                            valor_b[i]= 5;
+                            break;
+                        case 304:
+                        do {
+                            System.out.print("Quantidade: ");
+                            try {
+                                qtd_b[i]= in.nextInt();
+                                control1= true;
+                            } catch (InputMismatchException e) {
+                                func.spc();
+                                System.out.println("Informe um valor válido!");
+                                in.next();
+                                control1=false;}} while (!control1);
+                            valor_b[i]= 10;
+                            break;
+                        case 310:
+                        do {
+                            System.out.print("Quantidade: ");
+                            try {
+                                qtd_b[i]= in.nextInt();
+                                control1= true;
+                            } catch (InputMismatchException e) {
+                                func.spc();
+                                System.out.println("Informe um valor válido!");
+                                in.next();
+                                control1=false;}} while (!control1);
+                            valor_b[i]= 12;
+                            break;
+                        case 315:
+                        do {
+                            System.out.print("Quantidade: ");
+                            try {
+                                qtd_b[i]= in.nextInt();
+                                control1= true;
+                            } catch (InputMismatchException e) {
+                                func.spc();
+                                System.out.println("Informe um valor válido!");
+                                in.next();
+                                control1=false;}} while (!control1);
+                            valor_b[i]= 12;
+                            break;
+                        default:
+                            func.spc();
+                            System.out.println("Opção Inválida!");
+                            control1= false;
+                            break;}} while (!control1);
+                            
+                func.spc();
+                func.linha();
+                func.spc();
+                do {    //Avanço de Item - Selecionar outra bebida
+                    System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
+                    try {
                         opc= in.nextInt();
-                        break;
-                    case 304:
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);
+                while (opc!=0&&opc!=1) {
+                    func.spc();
+                    System.out.println("Opção Inválida!");
                     do {
-                        System.out.print("Quantidade: ");
+                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
                         try {
-                            qtd_p[i]= in.nextInt();
+                            opc= in.nextInt();
                             control1= true;
                         } catch (InputMismatchException e) {
                             func.spc();
                             System.out.println("Informe um valor válido!");
                             in.next();
-                            control1=false;}} while (!control1);
-                        valor_b[i]= 10;
-                        func.spc();
-                        func.linha();
-                        func.spc();
-                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
-                        opc= in.nextInt();
-                        break;
-                    case 310:
-                    do {
-                        System.out.print("Quantidade: ");
-                        try {
-                            qtd_p[i]= in.nextInt();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                        valor_b[i]= 12;
-                        func.spc();
-                        func.linha();
-                        func.spc();
-                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
-                        opc= in.nextInt();
-                        break;
-                    case 315:
-                    do {
-                        System.out.print("Quantidade: ");
-                        try {
-                            qtd_p[i]= in.nextInt();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                        valor_b[i]= 12;
-                        func.spc();
-                        func.linha();
-                        func.spc();
-                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
-                        opc= in.nextInt();
-                        break;
-                    default:
-                        func.spc();
-                        func.linha();
-                        System.out.println("Opção inválida!");
-                        func.linha();
-                        break;}
+                            control1=false;}} while (!control1);}
                 if (opc==0) {
                     control1= false;
                     control2= false;
                     func.spc();
                     func.linhad();
                     func.spc();}
-                i++; j++;}}
-        
-                double total= 0;
-                for (int k = 0, l= 1; k < 10; k++, l++) {
-                    func.linhad();
-                    System.out.println("-----Item "+l);
-                    func.spc();
-                    System.out.println("Pizza: "+inteira[k]+" / "+meia1[k]+" / "+meia2[k]);
-                    System.out.println("Valor: "+valor_p[k]);
-                    System.out.println("Quantidade: "+qtd_p[k]);
-                    func.spc();
-                    System.out.println("Bebida: "+bebida[k]);
-                    System.out.println("Valor: "+valor_b[k]);
-                    System.out.println("Quantidade: "+qtd_b[k]);
-                    func.spc();
-                    total= total+((valor_p[k]*qtd_p[k])+(valor_b[k]*qtd_b[k]));}
-                System.out.println("Valor Total: "+total);
+                i++; j++;}
+
+            double total= 0;
+            for (int k = 0, l= 1; k < 10; k++, l++) {
+                func.linhad();
+                System.out.println("-----Item "+l);
                 func.spc();
+                System.out.println("Pizza: "+inteira[k]+" / "+meia1[k]+" / "+meia2[k]);
+                System.out.println("Valor: "+valor_p[k]);
+                System.out.println("Quantidade: "+qtd_p[k]);
+                func.spc();
+                System.out.println("Bebida: "+bebida[k]);
+                System.out.println("Valor: "+valor_b[k]);
+                System.out.println("Quantidade: "+qtd_b[k]);
+                func.spc();
+                total= total+((valor_p[k]*qtd_p[k])+(valor_b[k]*qtd_b[k]));}
+            System.out.println("Valor Total: "+total);
+            func.spc();
                     
     in.close();}}
