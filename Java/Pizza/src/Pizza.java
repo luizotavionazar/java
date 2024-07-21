@@ -597,9 +597,9 @@ public class Pizza {
                             control1=false;}} while (!control1);
                     break;}
             
-            func.spc();
-            func.pontos();
             func.spc(); //Finalização do pedido
+            func.pontos();
+            func.spc(); 
             System.out.println("Obrigado "+nome+", pedido realizado com sucesso!");
             func.spc();
             System.out.println("Endereço de Entrega: Rua "+rua+", "+num+", "+bairro);
