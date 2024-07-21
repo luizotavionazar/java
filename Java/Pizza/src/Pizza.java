@@ -127,10 +127,10 @@ public class Pizza {
             if (opc==0) {
                 control1= false;}}
         
-        control1= true; //Selecionando as Pizzas do pedido
+        control1= true; 
         int i= 0, j= 1, meia1[]= new int[10], meia2[]= new int[10], inteira[]= new int[10], qtd_p[]= new int[10];
         double valor_p[]= new double[10];
-        while (control1) { 
+        while (control1&&j<=10) { //Selecionando as Pizzas do pedido
             func.pontos();
             System.out.println("-----Item "+j);
             func.spc();
@@ -196,16 +196,16 @@ public class Pizza {
                             System.out.println("Opção Inválida!");
                             control1= false;
                             break;}} while (!control1);
-            do {
-                System.out.print("Quantidade: ");
-                try {
-                    qtd_p[i]= in.nextInt();
-                    control1= true;
-                } catch (InputMismatchException e) {
-                    func.spc();
-                    System.out.println("Informe um valor válido!");
-                    in.next();
-                    control1=false;}} while (!control1);}
+                do {
+                    System.out.print("Quantidade: ");
+                    try {
+                        qtd_p[i]= in.nextInt();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);}
 
             else { //Pizza Meia
                 do {
@@ -297,7 +297,8 @@ public class Pizza {
             func.linha();
             func.spc();
             do {    //Avanço de Item - Selecionar outra pizza
-                System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
+                if (j<=9) {
+                    System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
                 try {
                     opc= in.nextInt();
                     control1= true;
@@ -305,7 +306,7 @@ public class Pizza {
                     func.spc();
                     System.out.println("Informe um valor válido!");
                     in.next();
-                    control1=false;}} while (!control1);
+                    control1=false;}}} while (!control1);
             while (opc!=0&&opc!=1) {
                 func.spc();
                 System.out.println("Opção Inválida!");
@@ -324,10 +325,12 @@ public class Pizza {
                 func.spc();
                 func.linhad();}
             i++; j++;
+            if (j==11) {
+                System.out.println("Quantidade máxima de itens atingida! Prosseguindo para a Totalização");}
             func.spc();}
 
-        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10]; //Avanço de item - Incluir bebidas
-        while (control2) {
+        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10]; 
+        while (control2&&j<=10) { //Avanço de item - Incluir bebidas
             do {
                 System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não "); 
                 try {
@@ -360,7 +363,7 @@ public class Pizza {
                 control2= false;
                 func.menu_bebidas();}}
             
-            while (control1) { // Selecionando as bebidas do pedido
+            while (control1&&j<=10) { // Selecionando as bebidas do pedido
                 func.spc();
                 func.pontos();
                 System.out.println("-----Item "+j);
@@ -434,20 +437,21 @@ public class Pizza {
                             System.out.println("Opção Inválida!");
                             control1= false;
                             break;}} while (!control1);
-                            
+
                 func.spc();
                 func.linha();
                 func.spc();
                 do {    //Avanço de Item - Selecionar outra bebida
-                    System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
-                    try {
-                        opc= in.nextInt();
-                        control1= true;
-                    } catch (InputMismatchException e) {
-                        func.spc();
-                        System.out.println("Informe um valor válido!");
-                        in.next();
-                        control1=false;}} while (!control1);
+                    if (j<=9) {
+                        System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
+                        try {
+                            opc= in.nextInt();
+                            control1= true;
+                        } catch (InputMismatchException e) {
+                            func.spc();
+                            System.out.println("Informe um valor válido!");
+                            in.next();
+                            control1=false;}}} while (!control1);
                 while (opc!=0&&opc!=1) {
                     func.spc();
                     System.out.println("Opção Inválida!");
@@ -467,7 +471,10 @@ public class Pizza {
                     func.spc();
                     func.linhad();
                     func.spc();}
-                i++; j++;}
+                i++; j++;
+                if (j==11) {
+                    System.out.println("Quantidade máxima de itens atingida! Prosseguindo para a Totalização");}
+                func.spc();}
 
             double total= 0;
             for (int k = 0, l= 1; k < 10; k++, l++) {
