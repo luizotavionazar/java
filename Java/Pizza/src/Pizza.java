@@ -127,11 +127,11 @@ public class Pizza {
             if (opc==0) {
                 control1= false;}}
         
-        control1= true; 
+        control1= true;  //Selecionando as Pizzas do pedido
         int i= 0, j= 1, meia1[]= new int[10], meia2[]= new int[10], inteira[]= new int[10], qtd_p[]= new int[10];
         String desc_p[]= new String[10], desc_p1[]= new String[10], desc_p2[]= new String[10];
         double valor_p[]= new double[10];
-        while (control1&&j<=10) { //Selecionando as Pizzas do pedido
+        while (control1&&j<=10) { 
             func.pontos();
             System.out.println("-----Item "+j);
             func.spc();
@@ -310,10 +310,10 @@ public class Pizza {
                         in.next();
                         control1=false;}} while (!control1);}
                 
-            func.spc();
+            func.spc(); //Avanço de Item - Selecionar outra pizza
             func.linha();
             func.spc();
-            do {    //Avanço de Item - Selecionar outra pizza
+            do {    
                 if (j<=9) {
                     System.out.print("Deseja selecionar outra Pizza? [1]Sim | [0]Não ");
                 try {
@@ -346,9 +346,9 @@ public class Pizza {
                 System.out.println("Quantidade máxima de itens atingida! Prosseguindo para a Totalização");}
             func.spc();}
 
-        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10];
+        int bebida[]= new int[10], qtd_b[]= new int[10], valor_b[]= new int[10]; //Avanço de item - Incluir bebidas
         String desc_b[]= new String[10];
-        while (control2&&j<=10) { //Avanço de item - Incluir bebidas
+        while (control2&&j<=10) { 
             do {
                 System.out.print("Deseja incluir bebidas no seu pedido? [1]Sim | [0]Não "); 
                 try {
@@ -459,10 +459,10 @@ public class Pizza {
                             control1= false;
                             break;}} while (!control1);
 
-                func.spc();
+                func.spc(); //Avanço de Item - Selecionar outra bebida
                 func.linha();
                 func.spc();
-                do {    //Avanço de Item - Selecionar outra bebida
+                do {    
                     if (j<=9) {
                         System.out.print("Deseja selecionar outra Bebida? [1]Sim | [0]Não ");
                         try {
@@ -499,11 +499,11 @@ public class Pizza {
                         System.out.println("Prosseguindo para a finalização do pedido...");}
                 func.spc();}
 
-            String rua= null, bairro= null, nome= null;
+            String rua= null, bairro= null, nome= null; //Dados de entrega do pedido
             int num= 0;
             float metros= 0;
             func.pontos();
-            System.out.println("ENDEREÇO DE ENTREGA"); //Entrega do pedido
+            System.out.println("ENDEREÇO DE ENTREGA"); 
             func.spc();
             do {
                 in.nextLine();
