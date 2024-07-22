@@ -2,9 +2,128 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Pizza {
+    public void linha() {
+        System.out.println("------------------------------------------------------");}
+
+    public void linhad() {
+        System.out.println("======================================================");}
+
+    public void pontos() {
+        System.out.println("******************************************************");}
+
+    public void spc() {
+        System.out.println("");}
+
+    public void menu_pizza() {
+        System.out.println("******************************************************");
+        System.out.println("*                  CARDAPIO DE PIZZAS                *");
+        System.out.println("======================================================");
+        System.out.println("|  CÓDIGO |  PIZZA  |  VALOR INTEIRA  |  VALOR MEIA  |");
+        System.out.println("|=========+=========+=================+==============|");
+        System.out.println("|    1    |  JAVA   |     R$75,90     |   R$37,95    |");
+        System.out.println("|---------+---------+-----------------+--------------|");
+        System.out.println("|    2    |   C++   |     R$88,15     |   R$44,075   |");
+        System.out.println("|---------+---------+-----------------+--------------|");
+        System.out.println("|    3    |  PYTHON |     R$79,90     |   R$39,95    |");
+        System.out.println("|---------+---------+-----------------+--------------|");
+        System.out.println("|    4    |   SQL   |     R$90,87     |   R$45,435   |");
+        System.out.println("|---------+---------+-----------------+--------------|");
+        System.out.println("|    5    |  FRANGO |     R$17,90     |   R$ 8,95    |");
+        System.out.println("======================================================");}
+
+    public void menu_bebidas() {
+        System.out.println("******************************************************");
+        System.out.println("*                CARDAPIO DE BEBIDAS                 *");
+        System.out.println("======================================================");
+        System.out.println("|   CÓDIGO  |           BEBIDA           |   VALOR   |");
+        System.out.println("|====================================================|");
+        System.out.println("|    303    |            ÁGUA            |  R$5,00   |");
+        System.out.println("|-----------+----------------------------+-----------|");
+        System.out.println("|    304    |      SUCO DE LARANJA       |  R$10,00  |");
+        System.out.println("|-----------+----------------------------+-----------|");
+        System.out.println("|    310    |    REFRIGERANTE NORMAL     |  R$12,00  |");
+        System.out.println("|-----------+----------------------------+-----------|");
+        System.out.println("|    315    |  REFRIGERANTE ZERO AÇUCAR  |  R$12,00  |");
+        System.out.println("======================================================");}
+    
+    public void inf_pizza(int opc, int i, int inteira[], int meia1[], int meia2[], double valor_p[], String desc_p[], String desc_p1[], String desc_p2[]) {
+        Pizza func= new Pizza();
+        int pizza= 0;
+        if (opc==0) {
+            pizza= inteira[i];}
+        else if (opc==1) {
+            if (meia1[i]!=0&&desc_p1[i]==null) {
+                pizza= meia1[i];}
+            else {
+                pizza= meia2[i];}}
+        switch (pizza) { // Atribuição de valores
+            case 1:
+                if (opc==0){
+                    desc_p[i]= "JAVA                        ";
+                    valor_p[i]= 75.90;}
+                else {
+                    if (desc_p1[i]==null) {
+                        desc_p1[i]= "*MEIA JAVA                  ";
+                        valor_p[i]= 37.95;}
+                        else {
+                            desc_p2[i]= " MEIA JAVA                  ";
+                            valor_p[i]= valor_p[i]+37.95;}}
+                break;
+            case 2:
+                if (opc==0){
+                    desc_p[i]= "C++                         ";
+                    valor_p[i]= 88.15;}
+                else {
+                    if (desc_p1[i]==null) {
+                        desc_p1[i]= "*MEIA C++                   ";
+                        valor_p[i]= 44.075;}
+                    else {
+                        desc_p2[i]= " MEIA C++                   ";
+                        valor_p[i]= valor_p[i]+44.075;}}
+                break;
+            case 3:
+                if (opc==0){
+                    desc_p[i]= "PYTHON                      ";
+                    valor_p[i]= 79.90;}
+                else {
+                    if (desc_p1[i]==null) {
+                        desc_p1[i]= "*MEIA PYTHON                ";
+                        valor_p[i]= 39.95;}
+                        else {
+                            desc_p2[i]= " MEIA PYTHON                ";
+                            valor_p[i]= valor_p[i]+39.95;}}
+                break;
+            case 4:
+                if (opc==0){
+                    desc_p[i]= "SQL                         ";
+                    valor_p[i]= 90.87;}
+                else {
+                    if (desc_p1[i]==null) {
+                        desc_p1[i]= "*MEIA SQL                   ";
+                        valor_p[i]= 45.435;}
+                    else {
+                        desc_p2[i]= " MEIA SQL                   ";
+                        valor_p[i]= valor_p[i]+45.435;}}
+                break;
+            case 5:
+                if (opc==0){
+                    desc_p[i]= "FRANGO                      ";
+                    valor_p[i]= 17.90;}
+                else {
+                    if (desc_p1[i]==null) {
+                        desc_p1[i]= "*MEIA FRANGO                ";
+                        valor_p[i]= 8.95;}
+                    else {
+                        desc_p2[i]= " MEIA FRANGO                ";
+                        valor_p[i]= valor_p[i]+8.95;}}
+                break;   
+            default:
+                func.spc();
+                System.out.println("Opção Inválida!");
+                break;}}
     public static void main(String[] args) {
         Scanner in= new Scanner(System.in);
-        Metodos func= new Metodos();
+        Pizza func= new Pizza();
 
         boolean control1= true, control2= true; //Foi necessário criar a control2 para que ao selecionar que não deseja incluir outra pizza, não fosse pulada a pergunta se deseja bebida
         int pizza= 0;
@@ -160,7 +279,6 @@ public class Pizza {
                         in.next();
                         control1=false;}} while (!control1);}
             
-            
             if (opc==0){ // Pizza Inteira
                 do {
                     do {
@@ -173,36 +291,8 @@ public class Pizza {
                             System.out.println("Informe um valor válido!");
                             in.next();
                             control1=false;}} while (!control1);
-                    switch (inteira[i]) { // Atribuição de valores
-                        case 1:
-                            desc_p[i]= "JAVA                        ";
-                            valor_p[i]= 75.90;
-                            control1= true;
-                            break;
-                        case 2:
-                            desc_p[i]= "C++                         ";
-                            valor_p[i]= 88.15;
-                            control1= true;
-                            break;
-                        case 3:
-                            desc_p[i]= "PYTHON                      ";
-                            valor_p[i]= 79.90;
-                            control1= true;
-                            break;
-                        case 4:
-                            desc_p[i]= "SQL                         ";
-                            valor_p[i]= 90.87;
-                            control1= true;
-                        case 5:
-                            desc_p[i]= "FRANGO                      ";
-                            valor_p[i]= 17.90;
-                            control1= true;
-                            break;   
-                        default:
-                            func.spc();
-                            System.out.println("Opção Inválida!");
-                            control1= false;
-                            break;}} while (!control1);
+                        func.inf_pizza(opc, i, inteira, meia1, meia2, valor_p, desc_p, desc_p1, desc_p2);
+                    } while (!control1);
                 do {
                     System.out.print("Quantidade: ");
                     try {
@@ -226,37 +316,7 @@ public class Pizza {
                             System.out.println("Informe um valor válido!");
                             in.next();
                             control1=false;}} while (!control1);
-                    switch (meia1[i]) { // Atribuição de valores
-                        case 1:
-                            desc_p1[i]= "*MEIA JAVA                  ";
-                            valor_p[i]= 37.95;
-                            control1= true;
-                            break;
-                        case 2:
-                            desc_p1[i]= "*MEIA C++                   ";
-                            valor_p[i]= 44.075;
-                            control1= true;
-                            break;
-                        case 3:
-                            desc_p1[i]= "*MEIA PYTHON                ";
-                            valor_p[i]= 39.95;
-                            control1= true;
-                            break;
-                        case 4:
-                            desc_p1[i]= "*MEIA SQL                   ";
-                            valor_p[i]= 45.435;
-                            control1= true;
-                            break;   
-                        case 5:
-                            desc_p1[i]= "*MEIA FRANGO                ";
-                            valor_p[i]= 8.95;
-                            control1= true;
-                            break;   
-                        default:
-                            func.spc();
-                            System.out.println("Opção Inválida!");
-                            control1= false;
-                            break;}} while (!control1);
+                        func.inf_pizza(opc, i, inteira, meia1, meia2, valor_p, desc_p, desc_p1, desc_p2);} while (!control1);
                 do {
                     do {
                         System.out.print("Informe o Código da Pizza da 2º metade: ");
@@ -268,37 +328,7 @@ public class Pizza {
                             System.out.println("Informe um valor válido!");
                             in.next();
                             control1=false;}} while (!control1);
-                    switch (meia2[i]) { // Atribuição de valores
-                        case 1:
-                            desc_p2[i]= " MEIA JAVA                  ";
-                            valor_p[i]= valor_p[i]+37.95;
-                            control1= true;
-                            break;
-                        case 2:
-                            desc_p2[i]= " MEIA C++                   ";
-                            valor_p[i]= valor_p[i]+44.075;
-                            control1= true;
-                            break;
-                        case 3:
-                            desc_p2[i]= " MEIA PYTHON                ";
-                            valor_p[i]= valor_p[i]+39.95;
-                            control1= true;
-                            break;
-                        case 4:
-                            desc_p2[i]= " MEIA SQL                   ";
-                            valor_p[i]= valor_p[i]+45.435;
-                            control1= true;
-                            break;   
-                        case 5:
-                            desc_p2[i]= " MEIA FRANGO                ";
-                            valor_p[i]= 8.95;
-                            control1= true;
-                            break;   
-                        default:
-                            func.spc();
-                            System.out.println("Opção Inválida!");
-                            control1= false;
-                            break;}} while (!control1);
+                        func.inf_pizza(opc, i, inteira, meia1, meia2, valor_p, desc_p, desc_p1, desc_p2);} while (!control1);
                 do {
                     System.out.print("Quantidade: ");
                     try {
@@ -513,17 +543,26 @@ public class Pizza {
                 bairro= in.nextLine();
                 System.out.print("Rua.....: ");
                 rua= in.nextLine();
-                System.out.print("Número..: ");
-                num= in.nextInt(); in.nextLine();
-                System.out.print("Distância até a Pizzaria(Metros): ");
-                try {
-                    metros= in.nextFloat(); in.nextLine();
-                    func.spc();
-                    control1= true;
-                } catch (InputMismatchException e) {
-                    func.spc();
-                    System.out.println("Informe um valor válido!");
-                    control1=false;}} while (!control1);
+                do {
+                    System.out.print("Número..: ");
+                    try {
+                        num= in.nextInt(); in.nextLine();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);
+                do {
+                    System.out.print("Distância até a Pizzaria(Metros): ");
+                    try {
+                        metros= in.nextFloat(); in.nextLine();
+                        control1= true;
+                    } catch (InputMismatchException e) {
+                        func.spc();
+                        System.out.println("Informe um valor válido!");
+                        in.next();
+                        control1=false;}} while (!control1);} while (!control1);
 
             int valor_frete= 0, tempo_entrega= 0;   //Atribui valor do Frete e Tempo de Entrega
             if (metros<1000){
@@ -585,7 +624,7 @@ public class Pizza {
                 default:
                     func.spc();
                     System.out.println("Opção Inválida!");
-                    do {
+                    do { //TRATAR ERRO AQUI NESTA REPETIÇÃO, NÃO ESTÁ AGINDO DE ACORDO, ANALISAR O QUE ESTA ACONTECENDO
                         System.out.print("Qual será a Forma de Pagamento? ");
                         try {
                             opc= in.nextInt();
