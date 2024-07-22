@@ -130,9 +130,12 @@ public class Pizza {
         int opc= 3;
 
         func.spc();
+        System.out.println("*******************PIZZARIA DA BOA********************");
+        System.out.println("*Peça sua Pizza da boa e uma bebida geladissima agora*");
+        System.out.println("*Para pedir Bebida você precisa pedir uma Pizza antes*");
+        func.spc();
         func.menu_pizza();
         func.spc();
-
         System.out.println("Deseja visualizar os ingredientes ou iniciar o pedido?"); //Inicia o programa
         do {
             System.out.print("   [1]Ver Ingredientes | [0]Iniciar Pedido : ");
@@ -537,10 +540,6 @@ public class Pizza {
             func.spc();
             do {
                 in.nextLine();
-                System.out.print("Seu nome: ");
-                nome= in.nextLine(); 
-                System.out.print("Bairro..: ");
-                bairro= in.nextLine();
                 System.out.print("Rua.....: ");
                 rua= in.nextLine();
                 do {
@@ -553,6 +552,8 @@ public class Pizza {
                         System.out.println("Informe um valor válido!");
                         in.next();
                         control1=false;}} while (!control1);
+                System.out.print("Bairro..: ");
+                bairro= in.nextLine();
                 do {
                     System.out.print("Distância até a Pizzaria(Metros): ");
                     try {
@@ -562,7 +563,10 @@ public class Pizza {
                         func.spc();
                         System.out.println("Informe um valor válido!");
                         in.next();
-                        control1=false;}} while (!control1);} while (!control1);
+                        control1=false;}} while (!control1);
+                System.out.print("Seu nome: ");
+                nome= in.nextLine();
+                func.spc(); } while (!control1);
 
             int valor_frete= 0, tempo_entrega= 0;   //Atribui valor do Frete e Tempo de Entrega
             if (metros<1000){
@@ -601,8 +605,8 @@ public class Pizza {
             System.out.println("Formas de Pagamento disponíveis:");
             System.out.println("[0] Cartão de Crédito\n[1] Pix\n[2] Vale Refeição");
             func.spc();
-            System.out.print("Qual será a Forma de Pagamento? ");
-            do {   
+            do { do {   
+                System.out.print("Qual será a Forma de Pagamento? ");
                 try {
                     opc= in.nextInt();
                     control1= true;
@@ -624,17 +628,8 @@ public class Pizza {
                 default:
                     func.spc();
                     System.out.println("Opção Inválida!");
-                    do { //TRATAR ERRO AQUI NESTA REPETIÇÃO, NÃO ESTÁ AGINDO DE ACORDO, ANALISAR O QUE ESTA ACONTECENDO
-                        System.out.print("Qual será a Forma de Pagamento? ");
-                        try {
-                            opc= in.nextInt();
-                            control1= true;
-                        } catch (InputMismatchException e) {
-                            func.spc();
-                            System.out.println("Informe um valor válido!");
-                            in.next();
-                            control1=false;}} while (!control1);
-                    break;}
+                        control1=false;
+                    break;}} while (!control1);
             
             func.spc(); //Finalização do pedido
             func.pontos();
