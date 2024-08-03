@@ -2,7 +2,7 @@ import java.util.ArrayList; import java.util.Iterator;
 import java.util.Scanner;
 
 public class App {
-    public int adicionar_aluno(Scanner in, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, String nome, double nota, int qtd_alunos){
+    public int adicionar_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, String nome, double nota, int qtd_alunos){
         System.out.println(" ");
         System.out.println("==INSERINDO ALUNO");
         System.out.println("  Digite 'sair' para encerrar o preenchimento");
@@ -20,6 +20,7 @@ public class App {
             in.nextLine();
             notas.add(nota);
             System.out.println(" ");}
+            func.visualizar_aluno(in, alunos, in, notas, null, nome, nota, qtd_alunos);
         return qtd_alunos;}
 
         public void visualizar_aluno(Scanner in, ArrayList<String>alunos, Iterator<String>iter_aluno, ArrayList<Double>notas, Iterator<Double>iter_nota, String nome, double nota, int qtd_alunos){
@@ -32,7 +33,8 @@ public class App {
             System.out.println("Nota.: "+nota);
             System.out.println(" ");}}
 
-        public int remover_aluno(Scanner in, ArrayList<String>alunos, ArrayList<Double>notas, String nome, int qtd_alunos){
+        @SuppressWarnings("unlikely-arg-type")
+        public int remover_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, String nome, int qtd_alunos){
             System.out.print("Informe o nome do Aluno que deseja remover: ");
             nome= in.nextLine();
             alunos.remove(alunos.indexOf(nome));
@@ -41,10 +43,11 @@ public class App {
             System.out.println(" ");
             System.out.println("Alteração realizada!");
             System.out.println(" ");
-            //func.visualiza_aluno(in, func, alunos, notas);
+            func.visualizar_aluno(in, alunos, in, notas, null, nome, qtd_alunos, qtd_alunos);
         return qtd_alunos;}
 
-        public void alterar_aluno(Scanner in, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, boolean control2, String nome, String novo_nome, double nota, double nova_nota, int qtd_alunos, int opc){
+        @SuppressWarnings("unlikely-arg-type")
+        public void alterar_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, boolean control2, String nome, String novo_nome, double nota, double nova_nota, int qtd_alunos, int opc){
             System.out.println("==ALTERANDO ALUNO");
         while (control1) {
             System.out.print("Informe o nome do Aluno: ");
@@ -108,8 +111,7 @@ public class App {
                         System.out.println(" ");
                         System.out.println("Opção inválida!");
                         break;}}}
-        //func.visualiza_aluno(in, func, alunos, notas);
-        }
+        func.visualizar_aluno(in, alunos, in, notas, null, novo_nome, nova_nota, qtd_alunos);}
 
         public void media_alunos(Iterator<Double>iter_nota, double nota, double media, int qtd_alunos){
             while (iter_nota.hasNext()) {
@@ -119,8 +121,8 @@ public class App {
             System.out.println(" ");
             System.out.println("Média total dos alunos: "+media);}
 
-    @SuppressWarnings("unlikely-arg-type")
     public static void main(String[] args) throws Exception {
+        App func= new App();
         Scanner in= new Scanner(System.in);
         ArrayList<String> alunos= new ArrayList<>();
         Iterator<String> iter_aluno= alunos.iterator();
@@ -132,7 +134,39 @@ public class App {
         double nota= 0, nova_nota=0, media= 0;
         boolean control1= true, control2= true;
 
-        //MENU
+        func.adicionar_aluno(in, func, alunos, notas, control1, novo_nome, nova_nota, qtd_alunos);
         System.out.println(" ");
-
+        System.out.println("Opções disponíveis");
+        System.out.println("  [1] Adicionar");
+        System.out.println("  [2] Visualizar");
+        System.out.println("  [3] Alterar");
+        System.out.println("  [4] Remover");
+        System.out.println("  [5] Calcular média");
+        System.out.println("  [6] Sair");
+        System.out.println(" ");
+        while (control1) {
+            System.out.print("O que deseja fazer agora? ");
+            opc= in.nextInt();
+            switch (opc) {
+                case 1:
+                    qtd_alunos= func.adicionar_aluno(in, func, alunos, notas, control1, novo_nome, nova_nota, qtd_alunos);
+                    break;
+                case 2:
+                    func.visualizar_aluno(in, alunos, iter_aluno, notas, iter_nota, novo_nome, nova_nota, qtd_alunos);
+                    break;
+                case 3:
+                    func.alterar_aluno(in, func, alunos, notas, control1, control2, nome, novo_nome, nota, nova_nota, qtd_alunos, opc);;
+                    break;
+                case 4:
+                    qtd_alunos= func.remover_aluno(in, func, alunos, notas, novo_nome, qtd_alunos);
+                    break;
+                case 5:
+                    func.media_alunos(iter_nota, nova_nota, media, qtd_alunos);;
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    System.out.println(" ");
+                    break;}}
         in.close();}}
