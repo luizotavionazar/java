@@ -91,8 +91,4 @@ public class App {
                     System.out.println("Opção inválida!");
                     control= false;
                     break;} }while (!control);
-<<<<<<< HEAD
         in.close();}}
-=======
-        in.close();}}
->>>>>>> 1fdb12b91b997bfe973619dbec40997cd0ea27c5
