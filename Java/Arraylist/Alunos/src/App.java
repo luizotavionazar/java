@@ -161,7 +161,7 @@ public class App {
                             break;}}}
             }
 
-        public void media_alunos(ArrayList<Double> notas, String nome, double nota, double media, int qtd_alunos){
+        public void media_alunos(ArrayList<Double> notas, double media, int qtd_alunos){
             Iterator<Double> iter_nota= notas.iterator();
             double soma= 0;
             while (iter_nota.hasNext()) {
@@ -208,7 +208,7 @@ public class App {
                     qtd_alunos= func.remover_aluno(in, func, alunos, notas, novo_nome, qtd_alunos);
                     break;
                 case 5:
-                    func.media_alunos(notas, novo_nome, nova_nota, media, qtd_alunos);
+                    func.media_alunos(notas, media, qtd_alunos);
                     break;
                 case 6:
                     control1= false;
