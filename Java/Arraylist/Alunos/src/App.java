@@ -2,7 +2,7 @@ import java.util.ArrayList; import java.util.Iterator;
 import java.util.Scanner;
 
 public class App {
-    public int adicionar_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, String nome, double nota, int qtd_alunos){
+    public int adicionar_aluno(Scanner in, App func, ArrayList<String>alunos, Iterator<String>iter_aluno, ArrayList<Double>notas, Iterator<Double>iter_nota, boolean control1, String nome, double nota, int qtd_alunos){
         System.out.println(" ");
         System.out.println("==INSERINDO ALUNO");
         System.out.println("  Digite 'sair' para encerrar o preenchimento");
@@ -20,18 +20,21 @@ public class App {
             in.nextLine();
             notas.add(nota);
             System.out.println(" ");}
-            func.visualizar_aluno(in, alunos, in, notas, null, nome, nota, qtd_alunos);
+            func.visualizar_aluno(in, alunos, notas, nome, nota, qtd_alunos);
         return qtd_alunos;}
 
-        public void visualizar_aluno(Scanner in, ArrayList<String>alunos, Iterator<String>iter_aluno, ArrayList<Double>notas, Iterator<Double>iter_nota, String nome, double nota, int qtd_alunos){
+        public void visualizar_aluno(Scanner in, ArrayList<String>alunos, ArrayList<Double>notas, String nome, double nota, int qtd_alunos){
+            Iterator<String> iter_aluno= alunos.iterator();
+            Iterator<Double> iter_nota= notas.iterator();
+            System.out.println("");
             System.out.println("Quantidade de Alunos: "+qtd_alunos);
             System.out.println(" ");
             while (iter_aluno.hasNext()) {
-            nome= iter_aluno.next();
-            nota= iter_nota.next();
-            System.out.println("Aluno: "+nome);
-            System.out.println("Nota.: "+nota);
-            System.out.println(" ");}}
+                nome= iter_aluno.next();
+                nota= iter_nota.next();
+                System.out.println("Aluno: "+nome);
+                System.out.println("Nota.: "+nota);
+                System.out.println(" ");}}
 
         @SuppressWarnings("unlikely-arg-type")
         public int remover_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, String nome, int qtd_alunos){
@@ -43,7 +46,7 @@ public class App {
             System.out.println(" ");
             System.out.println("Alteração realizada!");
             System.out.println(" ");
-            func.visualizar_aluno(in, alunos, in, notas, null, nome, qtd_alunos, qtd_alunos);
+            func.visualizar_aluno(in, alunos, notas, nome, qtd_alunos, qtd_alunos);
         return qtd_alunos;}
 
         @SuppressWarnings("unlikely-arg-type")
@@ -111,7 +114,7 @@ public class App {
                         System.out.println(" ");
                         System.out.println("Opção inválida!");
                         break;}}}
-        func.visualizar_aluno(in, alunos, in, notas, null, novo_nome, nova_nota, qtd_alunos);}
+        func.visualizar_aluno(in, alunos, notas, novo_nome, nova_nota, qtd_alunos);}
 
         public void media_alunos(Iterator<Double>iter_nota, double nota, double media, int qtd_alunos){
             while (iter_nota.hasNext()) {
@@ -134,7 +137,7 @@ public class App {
         double nota= 0, nova_nota=0, media= 0;
         boolean control1= true, control2= true;
 
-        func.adicionar_aluno(in, func, alunos, notas, control1, novo_nome, nova_nota, qtd_alunos);
+        func.adicionar_aluno(in, func, alunos, iter_aluno, notas, iter_nota, control1, novo_nome, nova_nota, qtd_alunos);
         System.out.println(" ");
         System.out.println("Opções disponíveis");
         System.out.println("  [1] Adicionar");
@@ -149,10 +152,10 @@ public class App {
             opc= in.nextInt();
             switch (opc) {
                 case 1:
-                    qtd_alunos= func.adicionar_aluno(in, func, alunos, notas, control1, novo_nome, nova_nota, qtd_alunos);
+                    qtd_alunos= func.adicionar_aluno(in, func, alunos, iter_aluno, notas, iter_nota, control1, novo_nome, nova_nota, qtd_alunos);
                     break;
                 case 2:
-                    func.visualizar_aluno(in, alunos, iter_aluno, notas, iter_nota, novo_nome, nova_nota, qtd_alunos);
+                    func.visualizar_aluno(in, alunos, notas, novo_nome, nova_nota, qtd_alunos);
                     break;
                 case 3:
                     func.alterar_aluno(in, func, alunos, notas, control1, control2, nome, novo_nome, nota, nova_nota, qtd_alunos, opc);;
