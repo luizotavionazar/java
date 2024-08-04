@@ -1,4 +1,6 @@
-import java.util.ArrayList; import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class App {
@@ -80,14 +82,21 @@ public class App {
             System.out.println("████████████████████████████████████████████████████████");
             System.out.println(" ");
             while (control1) {
-                System.out.println(" ");
                 System.out.print(" > Informe o nome do aluno: ");
                 nome= in.nextLine();
                 int index= alunos.indexOf(nome);
                 System.out.println(" ");
-                while (control1) {
-                    System.out.print(" > O que deseja alterar? [1]Nome [2]Nota [3]Ambos ");
-                    opc= in.nextInt();
+                    do {
+                        System.out.print(" > O que deseja alterar? [1]Nome [2]Nota [3]Ambos ");
+                    try {
+                        opc= in.nextInt();
+                        control2= true;}
+                    catch (InputMismatchException e) {
+                        System.out.println(" ");
+                        System.out.println("Informe um valor válido!");
+                        System.out.println(" ");
+                        in.next();
+                        control2= false;}}while (!control2);
                     in.nextLine();
                     System.out.println(" ");
                     System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
@@ -130,31 +139,39 @@ public class App {
                             System.out.println(" ");
                             control1= true;
                             control2= true;
-                            break;}}
+                            break;}
                 func.visualizar_aluno(in, alunos, notas, novo_nome, nova_nota, qtd_alunos);
                 while (control2) {
                     System.out.println("████████████████████████████████████████████████████████");
                     System.out.println(" ");
-                    System.out.print(" > Deseja alterar outro aluno? [1]Sim [2]Não ");
-                    opc= in.nextInt();
+                    do {
+                        System.out.print(" > Deseja alterar outro aluno? [1]Sim [2]Não ");
+                    try {
+                        opc= in.nextInt();
+                        control2= true;}
+                    catch (InputMismatchException e) {
+                        System.out.println(" ");
+                        System.out.println("Informe um valor válido!");
+                        System.out.println(" ");
+                        in.next();
+                        control2= false;}}while (!control2);
                     in.nextLine();
                     System.out.println(" ");
                     switch (opc) {
                         case 1:
                             System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
+                            System.out.println(" ");
                             control1= true;
                             control2= false;
                             break;
                         case 2:
-                            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
                             control1= false;
                             control2= false;
                             break;
                         default:
                             System.out.println(" ");
                             System.out.println(RED+"Opção inválida!"+RESET);
-                            break;}}}
-            }
+                            break;}}}}
 
         public void media_alunos(ArrayList<Double> notas, double media, int qtd_alunos){
             Iterator<Double> iter_nota= notas.iterator();
@@ -185,8 +202,17 @@ public class App {
         qtd_alunos= func.adicionar_aluno(in, func, alunos, iter_aluno, notas, iter_nota, control1, novo_nome, nova_nota, qtd_alunos);
         while (control1) {
             func.menu_opcoes();
+            do {
             System.out.print(GREEN+"  > O que deseja fazer agora? "+YELLOW);
-            opc= in.nextInt();
+            try {
+                opc= in.nextInt();
+                control2= true;}
+            catch (InputMismatchException e) {
+                System.out.println(" ");
+                System.out.println(RESET+"Informe um valor válido!");
+                System.out.println(" ");
+                in.next();
+                control2= false;}}while (!control2);
             in.nextLine();
             System.out.print(""+RESET);
             switch (opc) {
@@ -206,6 +232,7 @@ public class App {
                     func.media_alunos(notas, media, qtd_alunos);
                     break;
                 case 6:
+                    System.out.println(" ");
                     control1= false;
                     break;
                 default:
