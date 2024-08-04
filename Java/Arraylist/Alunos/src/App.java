@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class App {
     // Códigos ANSI para cores
-    public static final String RESET = "\033[0m";  // Reseta a cor
+    public static final String RESET = "\033[0m";      // Reseta a cor
     public static final String BLACK = "\033[0;30m";   // Preto
     public static final String RED = "\033[0;31m";     // Vermelho
     public static final String GREEN = "\033[0;32m";   // Verde
@@ -13,9 +13,21 @@ public class App {
     public static final String CYAN = "\033[0;36m";    // Ciano
     public static final String WHITE = "\033[0;37m";   // Branco
 
+    public void menu_opcoes(){
+        System.out.println("████████████████████████████████████████████████████████");
+        System.out.println(" ");
+        System.out.println("    >>MENU DE OPÇÕES - LISTA DE ALUNOS   ");
+        System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
+        System.out.println("      >[1] Adicionar        >[4] Remover");
+        System.out.println("      >[2] Visualizar       >[5] Calcular média");
+        System.out.println("      >[3] Alterar          >[6] Sair");
+        System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
+        System.out.println(" ");}
+
     public int adicionar_aluno(Scanner in, App func, ArrayList<String>alunos, Iterator<String>iter_aluno, ArrayList<Double>notas, Iterator<Double>iter_nota, boolean control1, String nome, double nota, int qtd_alunos){
         System.out.println(" ");
         System.out.println("████████████████████████████████████████████████████████");
+        System.out.println(" ");
         System.out.println(" >>INSERINDO ALUNO");
         System.out.println("   Digite 'sair' para encerrar o preenchimento");
         System.out.println(" ");
@@ -40,6 +52,7 @@ public class App {
             Iterator<Double> iter_nota= notas.iterator();
             System.out.println(" ");
             System.out.println("████████████████████████████████████████████████████████");
+            System.out.println(" ");
             System.out.println("    >>LISTA DE ALUNOS");
             System.out.println("      Quantidade: "+qtd_alunos);
             System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
@@ -50,20 +63,20 @@ public class App {
                 System.out.println("      > Nota.: "+nota);
                 System.out.println(" ");}}
 
-        @SuppressWarnings("unlikely-arg-type")
         public int remover_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, String nome, int qtd_alunos){
             System.out.println(" ");
             System.out.println("████████████████████████████████████████████████████████");
+            System.out.println(" ");
             System.out.println(" >>REMOVENDO ALUNO");
             System.out.println(" ");
             System.out.print(" > Informe o nome do aluno: ");
             nome= in.nextLine();
-            alunos.remove(alunos.indexOf(nome));
-            notas.remove(notas.indexOf(nome));
+            int index= alunos.indexOf(nome);
+            alunos.remove(index);
+            notas.remove(index);
             qtd_alunos--;
             System.out.println(" ");
-            System.out.println("Alteração realizada!");
-            System.out.println(" ");
+            System.out.println(" >>Alteração realizada!");
             func.visualizar_aluno(in, alunos, notas, nome, qtd_alunos, qtd_alunos);
         return qtd_alunos;}
 
@@ -118,7 +131,7 @@ public class App {
                             control2= true;
                             break;
                         default:
-                            System.out.println("Opção inválida!");
+                            System.out.println(RED+"Opção inválida!"+RESET);
                             System.out.println(" ");
                             control1= true;
                             control2= true;
@@ -130,6 +143,7 @@ public class App {
                     System.out.print(" > Deseja alterar outro aluno? [1]Sim [2]Não ");
                     opc= in.nextInt();
                     in.nextLine();
+                    System.out.println(" ");
                     switch (opc) {
                         case 1:
                             System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
@@ -143,14 +157,17 @@ public class App {
                             break;
                         default:
                             System.out.println(" ");
-                            System.out.println("Opção inválida!");
+                            System.out.println(RED+"Opção inválida!"+RESET);
                             break;}}}
             }
 
         public void media_alunos(Iterator<Double>iter_nota, double nota, double media, int qtd_alunos){
+            double soma= 0;
+            nota= 0;
             while (iter_nota.hasNext()) {
                 nota= iter_nota.next();
-                media= media+nota;}
+                soma= soma+nota;}
+            media= media+soma;
             media= media/qtd_alunos;
             System.out.println(" ");
             System.out.println("Média total dos alunos: "+media);}
@@ -170,18 +187,7 @@ public class App {
 
         qtd_alunos= func.adicionar_aluno(in, func, alunos, iter_aluno, notas, iter_nota, control1, novo_nome, nova_nota, qtd_alunos);
         while (control1) {
-            System.out.println("████████████████████████████████████████████████████████");
-            System.out.println("    >>MENU   ");
-            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
-            System.out.println("      >[1] Adicionar");
-            System.out.println("      >[2] Visualizar");
-            System.out.println("      >[3] Alterar");
-            System.out.println("      >[4] Remover");
-            System.out.println("      >[5] Calcular média");
-            System.out.println("      >[6] Sair");
-            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
-            System.out.println("████████████████████████████████████████████████████████");
-            System.out.println(" ");
+            func.menu_opcoes();
             System.out.print(GREEN+"  > O que deseja fazer agora? "+YELLOW);
             opc= in.nextInt();
             in.nextLine();
@@ -203,9 +209,11 @@ public class App {
                     func.media_alunos(iter_nota, nova_nota, media, qtd_alunos);;
                     break;
                 case 6:
+                    control1= false;
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println(" ");
+                    System.out.println(RED+"  Opção inválida!"+RESET);
                     System.out.println(" ");
                     break;}}
         in.close();}}
