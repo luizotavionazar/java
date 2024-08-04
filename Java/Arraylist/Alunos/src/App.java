@@ -4,21 +4,13 @@ import java.util.Scanner;
 public class App {
     // Códigos ANSI para cores
     public static final String RESET = "\033[0m";  // Reseta a cor
-
     public static final String BLACK = "\033[0;30m";   // Preto
-
     public static final String RED = "\033[0;31m";     // Vermelho
-
     public static final String GREEN = "\033[0;32m";   // Verde
-
     public static final String YELLOW = "\033[0;33m";  // Amarelo
-
     public static final String BLUE = "\033[0;34m";    // Azul
-
     public static final String PURPLE = "\033[0;35m";  // Roxo
-
     public static final String CYAN = "\033[0;36m";    // Ciano
-
     public static final String WHITE = "\033[0;37m";   // Branco
 
     public int adicionar_aluno(Scanner in, App func, ArrayList<String>alunos, Iterator<String>iter_aluno, ArrayList<Double>notas, Iterator<Double>iter_nota, boolean control1, String nome, double nota, int qtd_alunos){
