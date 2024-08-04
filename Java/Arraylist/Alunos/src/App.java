@@ -75,69 +75,77 @@ public class App {
             func.visualizar_aluno(in, alunos, notas, nome, qtd_alunos, qtd_alunos);
         return qtd_alunos;}
 
-        @SuppressWarnings("unlikely-arg-type")
         public void alterar_aluno(Scanner in, App func, ArrayList<String>alunos, ArrayList<Double>notas, boolean control1, boolean control2, String nome, String novo_nome, double nota, double nova_nota, int qtd_alunos, int opc){
             System.out.println(" ");
             System.out.println("████████████████████████████████████████████████████████");
-            System.out.println(" >>ALTERANDO ALUNO");
             System.out.println(" ");
             while (control1) {
+                System.out.println(" ");
                 System.out.print(" > Informe o nome do aluno: ");
                 nome= in.nextLine();
+                int index= alunos.indexOf(nome);
                 System.out.println(" ");
                 while (control1) {
                     System.out.print(" > O que deseja alterar? [1]Nome [2]Nota [3]Ambos ");
                     opc= in.nextInt();
                     in.nextLine();
                     System.out.println(" ");
+                    System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
+                    System.out.println(" ");
                     switch (opc) {
                         case 1:
                             System.out.print(" > Novo nome: ");
                             novo_nome= in.nextLine();
-                            alunos.set(alunos.indexOf(nome),novo_nome);
+                            alunos.set(index,novo_nome);
                             System.out.println(" ");
                             System.out.println("Alteração realizada!");
                             control1= false;
+                            control2= true;
                             break;
                         case 2:
                             System.out.print(" > Nova nota: ");
                             nova_nota= in.nextDouble();
                             in.nextLine();
-                            notas.set(notas.indexOf(nome),nova_nota);
+                            notas.set(index,nova_nota);
                             System.out.println(" ");
                             System.out.println("Alteração realizada!");
                             control1= false;
+                            control2= true;
                             break;
                         case 3:
                             System.out.print(" > Novo nome: ");
                             novo_nome= in.nextLine();
-                            alunos.set(alunos.indexOf(nome),novo_nome);
-                            System.out.println(" ");
+                            alunos.set(index,novo_nome);
                             System.out.print(" > Nova nota: ");
                             nova_nota= in.nextDouble();
                             in.nextLine();
-                            notas.set(notas.indexOf(nome),nova_nota);
+                            notas.set(index,nova_nota);
                             System.out.println(" ");
                             System.out.println("Alteração realizada!");
                             control1= false;
+                            control2= true;
                             break;
                         default:
                             System.out.println("Opção inválida!");
                             System.out.println(" ");
                             control1= true;
+                            control2= true;
                             break;}}
                 func.visualizar_aluno(in, alunos, notas, novo_nome, nova_nota, qtd_alunos);
                 while (control2) {
+                    System.out.println("████████████████████████████████████████████████████████");
+                    System.out.println(" ");
                     System.out.print(" > Deseja alterar outro aluno? [1]Sim [2]Não ");
                     opc= in.nextInt();
                     in.nextLine();
-                    System.out.println(" ");
                     switch (opc) {
                         case 1:
+                            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
                             control1= true;
                             control2= false;
                             break;
                         case 2:
+                            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
                             control1= false;
                             control2= false;
                             break;
