@@ -12,7 +12,7 @@ public class App {
 
     public void menu_opcoes(){
         System.out.println("─────────────────────────────────────────────────────────");
-        System.out.println("       > MENU DE OPÇÕES - AGENDA DE COMPROMISSOS ◄       ");
+        System.out.println("       > MENU DE OPÇÕES - AGENDA DE COMPROMISSOS <       ");
         System.out.println("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»");
         System.out.println("       >[1] Adicionar        >[4] Remover                ");
         System.out.println("       >[2] Visualizar       >[5] Alterar                ");
@@ -128,7 +128,10 @@ public class App {
             func.visualizar_compromisso(in, func, compromissos, compromissos, compromisso, qtd_comp);
         return qtd_comp;}
 
-        public void alterar_compromisso(Scanner in, App func, ArrayList<String>compromissos, ArrayList<String>datas, boolean control1, boolean control2, String compromisso, String novo_compromisso, double dia, double nova_dia, int qtd_comp, int opc){
+        public void alterar_compromisso(Scanner in, App func, ArrayList<String>compromissos, ArrayList<String>datas, String compromisso, String novo_compromisso, double dia, double nova_dia, int qtd_comp, int opc){
+            boolean control1= true, control2= true;
+            int novo_dia= 0, novo_mes= 0, novo_ano= 0;
+            String nova_data= null;
             System.out.println(" ");
             System.out.println("─────────────────────────────────────────────────────────");
             System.out.println(" ");
@@ -138,7 +141,7 @@ public class App {
                 num_comp--;
                 System.out.println(" ");
                     do {
-                        System.out.print(" > O que deseja alterar? [1]Descrição [2]Data ");
+                        System.out.print(" > O que deseja alterar? [1]Descrição [2]Data [3]Ambos ");
                     try {
                         opc= in.nextInt(); in.nextLine();
                         control2= true;}
@@ -157,22 +160,82 @@ public class App {
                             novo_compromisso= in.nextLine();
                             compromissos.set(num_comp,novo_compromisso);
                             System.out.println(" ");
-                            System.out.println(" ♦ Alteração realizada!");
+                            System.out.println(" >> Alteração realizada!");
                             control1= false;
                             control2= true;
                             break;
                         case 2:
                             System.out.println(" > Nova Data");
-                            System.out.print("    ♦ Dia: ");
-                            int novo_dia= in.nextInt(); in.nextLine();
-                            System.out.print("    ♦ Mês: ");
-                            int novo_mes= in.nextInt(); in.nextLine();
-                            System.out.print("    ♦ Ano: ");
-                            int novo_ano= in.nextInt(); in.nextLine();
-                            String nova_data= novo_dia+"/"+novo_mes+"/"+novo_ano;
+                            do {
+                                System.out.print("       > Dia: ");
+                                novo_dia= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_dia<1||novo_dia>31) {
+                                    System.out.println(" ");
+                                    System.out.println("Dia inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            do {
+                                System.out.print("       > Mês: ");
+                                novo_mes= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_mes<1||novo_mes>12) {
+                                    System.out.println(" ");
+                                    System.out.println("Mês inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            do {
+                                System.out.print("       > Ano: ");
+                                novo_ano= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_ano<2024) {
+                                    System.out.println(" ");
+                                    System.out.println("Ano inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            nova_data= novo_dia+"/"+novo_mes+"/"+novo_ano;
                             datas.set(num_comp,nova_data);
                             System.out.println(" ");
-                            System.out.println(" ♦ Alteração realizada!");
+                            System.out.println(" >> Alteração realizada!");
+                            control1= false;
+                            control2= true;
+                            break;
+                        case 3:
+                            System.out.print(" > Nova descrição: ");
+                            novo_compromisso= in.nextLine();
+                            compromissos.set(num_comp,novo_compromisso);
+                            System.out.println(" > Nova Data");
+                            do {
+                                System.out.print("       > Dia: ");
+                                novo_dia= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_dia<1||novo_dia>31) {
+                                    System.out.println(" ");
+                                    System.out.println("Dia inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            do {
+                                System.out.print("       > Mês: ");
+                                novo_mes= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_mes<1||novo_mes>12) {
+                                    System.out.println(" ");
+                                    System.out.println("Mês inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            do {
+                                System.out.print("       > Ano: ");
+                                novo_ano= in.nextInt(); in.nextLine();
+                                control2= true;
+                                if (novo_ano<2024) {
+                                    System.out.println(" ");
+                                    System.out.println("Ano inválido!");
+                                    System.out.println(" ");
+                                    control2= false;}} while (!control2);
+                            nova_data= novo_dia+"/"+novo_mes+"/"+novo_ano;
+                            datas.set(num_comp,nova_data);
+                            System.out.println(" ");
+                            System.out.println(" >> Alteração realizada!");
                             control1= false;
                             control2= true;
                             break;
@@ -187,7 +250,7 @@ public class App {
                     System.out.println("─────────────────────────────────────────────────────────");
                     System.out.println(" ");
                     do {
-                        System.out.print(" > Deseja alterar outro aluno? [1]Sim [2]Não ");
+                        System.out.print(" > Deseja alterar outro compromisso? [1]Sim [2]Não ");
                     try {
                         opc= in.nextInt();
                         control2= true;}
@@ -201,7 +264,7 @@ public class App {
                     System.out.println(" ");
                     switch (opc) {
                         case 1:
-                            System.out.println("««««««««««««««««««««««««««««««««««««««««««««««««««««««««");
+                            System.out.println("─────────────────────────────────────────────────────────");
                             System.out.println(" ");
                             control1= true;
                             control2= false;
@@ -254,7 +317,7 @@ public class App {
                     qtd_comp= func.remover_compromisso(in, func, compromissos, datas, compromisso, qtd_comp);
                     break;
                 case 5:
-                    func.alterar_compromisso(in, func, compromissos, datas, control1, control2, compromisso, compromisso, opc, opc, qtd_comp, opc);
+                    func.alterar_compromisso(in, func, compromissos, datas, compromisso, compromisso, opc, opc, qtd_comp, opc);
                     break;
                 case 6:
                     System.out.println(" ");
