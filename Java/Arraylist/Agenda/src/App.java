@@ -84,87 +84,93 @@ public class App {
                 num_comp++;}}
 
         public void pesquisar_compromisso(Scanner in, App func, int opc, ArrayList<String>compromissos, ArrayList<String>datas, String compromisso, int qtd_comp){
-            Iterator<String> iter_comp= compromissos.iterator();
-            Iterator<String> iter_data= datas.iterator();
             String data_comp= null;
-            boolean control1= true, control2= true;
+            boolean control=true, control1= true, control2= true, achou= false;
             int dia= 0, mes= 0, ano= 0;
             System.out.println(" ");
             System.out.println("├─────────────PESQUISANDO COMPROMISSOS──────────────────┤");
-            while (control1&&control2) {
-                System.out.println(" ");
-                System.out.println(" > Insira a Data que deseja buscar: ");
-                do {
-                    System.out.print("       > Dia: ");
-                    dia= in.nextInt(); in.nextLine();
-                    control1= true;
-                    if (dia<1||dia>31) {
-                        System.out.println(" ");
-                        System.out.println("Dia inválido!");
-                        System.out.println(" ");
-                        control1= false;}} while (!control1);
-                do {
-                    System.out.print("       > Mês: ");
-                    mes= in.nextInt(); in.nextLine();
-                    control1= true;
-                    if (mes<1||mes>12) {
-                        System.out.println(" ");
-                        System.out.println("Mês inválido!");
-                        System.out.println(" ");
-                        control1= false;}} while (!control1);
-                do {
-                    System.out.print("       > Ano: ");
-                    ano= in.nextInt(); in.nextLine();
-                    control1= true;
-                    if (ano<2024) {
-                        System.out.println(" ");
-                        System.out.println("Ano inválido!");
-                        System.out.println(" ");
-                        control1= false;}} while (!control1);
-                String data= dia+"/"+mes+"/"+ano;
-                System.out.println(" ");
-                while (iter_data.hasNext()) {
-                    data_comp= iter_data.next();
-                    if (data.equals(data_comp)) { //ERRO AQUI, APÓS VISUALIZAR O COMPROMISSO ELE SOME DO ARRYLIST
+            while (control) {
+                while (control1) {
+                    System.out.println(" ");
+                    System.out.println(" > Insira a Data que deseja buscar: ");
+                    do {
+                        System.out.print("       > Dia: ");
+                        dia= in.nextInt(); in.nextLine();
+                        control1= true;
+                        if (dia<1||dia>31) {
+                            System.out.println(" ");
+                            System.out.println("Dia inválido!");
+                            System.out.println(" ");
+                            control1= false;}} while (!control1);
+                    do {
+                        System.out.print("       > Mês: ");
+                        mes= in.nextInt(); in.nextLine();
+                        control1= true;
+                        if (mes<1||mes>12) {
+                            System.out.println(" ");
+                            System.out.println("Mês inválido!");
+                            System.out.println(" ");
+                            control1= false;}} while (!control1);
+                    do {
+                        System.out.print("       > Ano: ");
+                        ano= in.nextInt(); in.nextLine();
+                        control1= true;
+                        if (ano<2024) {
+                            System.out.println(" ");
+                            System.out.println("Ano inválido!");
+                            System.out.println(" ");
+                            control1= false;}} while (!control1);
+                    String data= dia+"/"+mes+"/"+ano;
+                    System.out.println(" ");
+                    Iterator<String> iter_comp= compromissos.iterator();
+                    Iterator<String> iter_data= datas.iterator();
+                    while (iter_data.hasNext()) {
+                        data_comp= iter_data.next();
                         compromisso= iter_comp.next();
-                        System.out.println("╠ Compromisso: "+compromisso);
-                        System.out.println("╠ Data: "+data_comp);
-                        System.out.println("╠");
-                        break;}
-                    else {
-                        System.out.println("Não encontrado compromissos para "+data);
-                        System.out.print("Deseja informar outra data? [1]Sim [2]Não "); //ERRO AQUI, AO INFORMAR NAO ELE CONTINUA A EXECUÇÃO DEVIDO A LINHA 141 SER UM DOWHILE
-                        opc= in.nextInt();
-                        if (opc==2) {
+                        if (data.equals(data_comp)) {
+                            System.out.println("╠ Compromisso: "+compromisso);
+                            System.out.println("╠ Data: "+data_comp);
+                            System.out.println("║");
+                            achou= true;}}
+                        if (!achou) {
+                            System.out.println("Não encontrado compromissos para "+data);
+                            System.out.print("Deseja informar outra data? [1]Sim [2]Não ");
+                            opc= in.nextInt();
+                            if (opc==1) {
+                                control1= true;}
+                            else {
+                                control1= false;
+                                control2= true;}}
+                        else{
                             control1= false;
-                            control2= false;}}}
-                do {
-                    System.out.print(" > Deseja pesquisar outro compromisso? [1]Sim [2]Não ");
-                try {
-                    opc= in.nextInt();
-                    control1= true;}
-                catch (InputMismatchException e) {
-                    System.out.println(" ");
-                    System.out.println("Informe um valor válido!");
-                    System.out.println(" ");
-                    in.next();
-                    control1= false;}
-                in.nextLine();
-                System.out.println(" ");
-                switch (opc) {
-                    case 1:
-                        System.out.println("─────────────────────────────────────────────────────────");
-                        control2= true;
-                        break;
-                    case 2:
-                        control1= false;
-                        control2= false;
-                        break;
-                    default:
+                            control2= true;}}
+                    while (control2) {
+                        System.out.print(" > Deseja pesquisar outro compromisso? [1]Sim [2]Não ");
+                        try {
+                            opc= in.nextInt();}
+                        catch (InputMismatchException e) {
+                            System.out.println(" ");
+                            System.out.println("Informe um valor válido!");
+                            System.out.println(" ");
+                            in.next();}
+                        in.nextLine();
                         System.out.println(" ");
-                        System.out.println(RED+"Opção inválida!"+RESET);
-                        break;}}while (!control1&&control2);}}
-            
+                        switch (opc) {
+                            case 1:
+                                control= true;
+                                control1= true;
+                                control2= false;
+                                System.out.println("─────────────────────────────────────────────────────────");
+                                break;
+                            case 2:
+                                control2= false;
+                                control= false;
+                                break;
+                            default:
+                                System.out.println(" ");
+                                System.out.println(RED+"Opção inválida!"+RESET);
+                                break;}}}}
+        
         public int remover_compromisso(Scanner in, App func, ArrayList<String>compromissos, ArrayList<String>datas, String compromisso, int qtd_comp){
             System.out.println(" ");
             System.out.println("├─────────────────REMOVENDO COMPROMISSO─────────────────┤");
@@ -176,7 +182,7 @@ public class App {
             datas.remove(num_comp);
             qtd_comp--;
             System.out.println(" ");
-            System.out.println(" ♦ Alteração realizada!");
+            System.out.println(" >> Alteração realizada!");
             func.visualizar_compromisso(in, func, compromissos, compromissos, compromisso, qtd_comp);
         return qtd_comp;}
 
