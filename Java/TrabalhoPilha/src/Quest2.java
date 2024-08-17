@@ -83,7 +83,10 @@ public class Quest2 {
                     break;
                 case 2:
                     if (func.verificar_acesso(opc, links, historico)) {
-                        links.pop();}
+                        try {
+                            links.pop();
+                            historico.add(links.peek());
+                        } catch (Exception EmptyStackException) {}}
                     break;
                 case 3:
                     if (func.verificar_acesso(opc, links, historico)) {
