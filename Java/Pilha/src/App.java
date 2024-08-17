@@ -63,7 +63,7 @@ public class App {
         Scanner in= new Scanner(System.in);
         Stack<String>tarefas= new Stack<>();
         int qtd_tarefas= 1, opc= 0;
-        Quest1 func= new Quest1();
+        App func= new App();
         boolean control= true;
         
         while (control) {
