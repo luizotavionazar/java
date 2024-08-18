@@ -1,0 +1,19 @@
+3. Em minha casa tenho uma estante de livros. Sempre que compro um livro novo
+empilho no topo da pilha. Suponha que temos 10 livros nesta pilha. Responda:
+
+a) Usando a estrutura de dados pilha na linguagem java quero remover o 9º
+elemento apartir do topo. Como eu deveria realizar essa operação?
+    Desempilhando todos os 9 últimos valores da pilha a partir do topo, utilizando um laço de repetição, por exemplo:
+    "Scanner in= new Scanner(System.in);
+    String entrada= null;
+    for(int i= 0; i<10; i++) {
+        entrada= in.nextLine();
+        links.push(entrada);}
+    for(int i= 0; i<9; i++) {
+        links.pop();}
+    System.out.println(links.peek());"
+    Nesse exemplo, preenchedo valores "1" até "10" na pilha, após desempilhar a pilha até o 9º elemento a partir do topo, será retornado o novo topo "1".
+
+b) Usando a estrutura de dados ArrayList na linguagem java desejo remover o
+9º elemento adicionado. Como eu deveria realizar essa operação?
+    Utilizando "nome_arraylist.remove(8);" para remover diretamente o 9º elemento da lista.

@@ -47,8 +47,8 @@ public class Quest1 {
                 String carac= String.valueOf(caractere);
                 pilha.push(carac); }
             else if (caractere== ']'||
-                       caractere== '}'||
-                       caractere== ')') {
+                     caractere== '}'||
+                     caractere== ')') {
                 if (pilha.isEmpty()) { //Entrada de fechamento sem antes existir abertura, está desbalanceado
                     control= false; 
                     break;}

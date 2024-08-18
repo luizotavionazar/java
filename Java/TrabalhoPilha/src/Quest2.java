@@ -41,7 +41,8 @@ public class Quest2 {
         System.out.println("HISTORICO DE NAVEGAÇÃO: ");
         for (int i= historico.size()-1; i >= 0; i--) {
             System.out.println(" "+ordem+"º: "+historico.get(i));
-            ordem--;}}
+            ordem--;}
+        System.out.println("*************************");}
 
     public boolean verificar_acesso(int opc, Stack<String> links, ArrayList<String> historico){
         if (links.isEmpty()) {
