@@ -25,6 +25,7 @@ public class App {
         boolean control= true;
         int opc=0;
         String nome= null;
+
         seque++;
         fila.offer(seque);
         System.out.println("");
@@ -51,11 +52,14 @@ public class App {
                 control= false;}}
         if (opc==1) {
             System.out.print("Nome: ");
-            nome= in.nextLine();}
+            nome= in.nextLine();
+            pessoa.add(nome);}
+        else {
+            pessoa.add("");}
         return seque;}
 
     public void chamar_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
-
+        
     }
 
     public void ver_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
