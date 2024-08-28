@@ -51,23 +51,37 @@ public class App {
             else {
                 control= false;}}
         if (opc==1) {
+            System.out.println("");
             System.out.print("Nome: ");
             nome= in.nextLine();
             pessoa.add(nome);}
         else {
             pessoa.add("");}
-        return seque;}
+        return seque;
+    }
 
     public void chamar_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
-        
+        System.out.println("");
+        System.out.println("─────────────────────────");
+        System.out.println("     CHAMANDO SENHA");
+        System.out.println("");
+        int indice= fila.peek()-1;
+        System.out.print("Senha "+fila.poll());
+        if (!pessoa.get(indice).isEmpty()) {
+            System.out.print(" - "+pessoa.get(indice));}
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Favor comparecer no guiche!");
     }
 
     public void ver_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
-
-    }
-
-    public void tamanho_fila(Queue<Integer> fila) {
-
+        System.out.println("");
+        System.out.println("─────────────────────────");
+        System.out.println("     PRÓXIMAS SENHAS");
+        System.out.println("");
+        System.out.println("Existem "+fila.size()+" pessoas na fila.");
+        System.out.println("");
+        System.out.println("Senhas na fila: ");
     }
 
     public void remover_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
