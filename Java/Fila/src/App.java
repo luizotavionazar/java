@@ -21,7 +21,7 @@ public class App {
         System.out.println("");
         System.out.print("Escolha a opção desejada: "); }
 
-    public void incluir_fila(Scanner in, Queue<Integer> fila, ArrayList<String> pessoa, int seque) {
+    public int incluir_fila(Scanner in, Queue<Integer> fila, ArrayList<String> pessoa, int seque) {
         boolean control= true;
         int opc=0;
         String nome= null;
@@ -42,17 +42,17 @@ public class App {
                     control= false; }
                 in.nextLine();
             } while (!control);
-            if (opc!=0||
+            if (opc!=0&&
                 opc!=1) {
                 System.out.println("Opção inválida!");
                 System.out.println("");
-                control= false;}
-        }
-        
-        
+                control= true;}
+            else {
+                control= false;}}
         if (opc==1) {
             System.out.print("Nome: ");
-            nome= in.nextLine();}}
+            nome= in.nextLine();}
+        return seque;}
 
     public void chamar_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
 
@@ -107,7 +107,7 @@ public class App {
                 control= false;
                 break;
             case 1:
-                func.incluir_fila(in, fila, pessoa, seque);
+                seque= func.incluir_fila(in, fila, pessoa, seque);
                 break;
             case 2:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
