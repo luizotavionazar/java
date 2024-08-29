@@ -151,20 +151,26 @@ public class Quest1 {
                     senhas.add(seque);
                     break;
                 case 2:
+
                     if (func.verificar_acesso(opc, fila, pessoa)) {
                         func.chamar_fila(fila, pessoa); }
+
                     break;
                 case 3:
+
                     if (func.verificar_acesso(opc, fila, pessoa)) {
                         func.ver_fila(fila, senhas); }
+
                     break;
                 case 4:
+
                     if (func.verificar_acesso(opc, fila, pessoa)) {
                         fila.clear();
                         System.out.println("");
                         System.out.println("─────────────────────────");
                         System.out.println("");
                         System.out.println("Fila esvaziada!"); }
+                        
                     break;
                 default:
                     System.out.println("");
