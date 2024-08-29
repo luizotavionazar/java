@@ -5,6 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 public class App {
     public void menu(Queue<Integer> fila) {
         System.out.println("");
@@ -57,8 +59,7 @@ public class App {
             pessoa.add(nome);}
         else {
             pessoa.add("");}
-        return seque;
-    }
+        return seque;}
 
     public void chamar_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
         System.out.println("");
@@ -74,14 +75,21 @@ public class App {
         System.out.println("Favor comparecer no guiche!");
     }
 
-    public void ver_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
+    public void ver_fila(Queue<Integer> fila, ArrayList<Integer> senhas, Iterator i) {
+        //Iterator sens= senhas.iterator();
         System.out.println("");
         System.out.println("─────────────────────────");
         System.out.println("     PRÓXIMAS SENHAS");
         System.out.println("");
-        System.out.println("Existem "+fila.size()+" pessoas na fila.");
+        System.out.println("Existem "+fila.size()+" pessoas na fila atualmente.");
         System.out.println("");
         System.out.println("Senhas na fila: ");
+        System.out.println("");
+        System.out.print("Senhas geradas: ");
+        while (sens.hasNext()) {
+            int senha= sens.next();
+            System.out.print(senha+" ");
+        }
     }
 
     public void remover_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
@@ -103,6 +111,7 @@ public class App {
         App func= new App();
         Queue<Integer> fila= new LinkedList<>();
         ArrayList<String> pessoa= new ArrayList<>();
+        ArrayList<Integer> senhas= new ArrayList<>();
 
         boolean control= true, control1= true;
         int opc= 0, seque= 0;
@@ -126,6 +135,7 @@ public class App {
                 break;
             case 1:
                 seque= func.incluir_fila(in, fila, pessoa, seque);
+                senhas.add(seque);
                 break;
             case 2:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
@@ -133,12 +143,14 @@ public class App {
                 break;
             case 3:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
-                    func.ver_fila(fila, pessoa); }
+                    Iterator i = senhas.iterator();
+                    func.ver_fila(fila, senhas,i); }
                 break;
             case 4:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
                     func.remover_fila(fila, pessoa); }
                 break;
             default:
+                System.out.println("");
                 System.out.println("Opção inválida!");
                 break; }}}}
