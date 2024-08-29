@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Stack;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class App {
     public void menu(Queue<Integer> fila) {
@@ -75,26 +73,24 @@ public class App {
         System.out.println("Favor comparecer no guiche!");
     }
 
-    public void ver_fila(Queue<Integer> fila, ArrayList<Integer> senhas, Iterator i) {
-        //Iterator sens= senhas.iterator();
+    public void ver_fila(Queue<Integer> fila, ArrayList<Integer> senhas) {
+        Iterator<Integer> sens= senhas.iterator();
         System.out.println("");
         System.out.println("─────────────────────────");
         System.out.println("     PRÓXIMAS SENHAS");
         System.out.println("");
         System.out.println("Existem "+fila.size()+" pessoas na fila atualmente.");
         System.out.println("");
-        System.out.println("Senhas na fila: ");
+        System.out.print("Senhas na fila: ");
+        for (Integer conteudo : fila) {
+            System.out.print(conteudo+" ");}
         System.out.println("");
-        System.out.print("Senhas geradas: ");
+        System.out.println("");
+        System.out.print("Senhas já geradas: ");
         while (sens.hasNext()) {
             int senha= sens.next();
-            System.out.print(senha+" ");
-        }
-    }
-
-    public void remover_fila(Queue<Integer> fila, ArrayList<String> pessoa) {
-
-    }
+            System.out.print(senha+" ");}
+        System.out.println("");}
 
     public boolean verificar_acesso(int opc, Queue<Integer> fila, ArrayList<String> pessoa){
         if (fila.isEmpty()) {
@@ -143,12 +139,15 @@ public class App {
                 break;
             case 3:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
-                    Iterator i = senhas.iterator();
-                    func.ver_fila(fila, senhas,i); }
+                    func.ver_fila(fila, senhas); }
                 break;
             case 4:
                 if (func.verificar_acesso(opc, fila, pessoa)) {
-                    func.remover_fila(fila, pessoa); }
+                    fila.clear();
+                    System.out.println("");
+                    System.out.println("─────────────────────────");
+                    System.out.println("");
+                    System.out.println("Fila esvaziada!"); }
                 break;
             default:
                 System.out.println("");
