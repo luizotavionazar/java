@@ -170,9 +170,11 @@ public class Quest1 {
                         System.out.println("─────────────────────────");
                         System.out.println("");
                         System.out.println("Fila esvaziada!"); }
-                        
+
                     break;
                 default:
                     System.out.println("");
                     System.out.println("Opção inválida!");
-                    break; }}}}
+                    break;  }}
+                
+                in.close();}}
