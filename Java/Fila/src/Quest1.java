@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class App {
+public class Quest1 {
     public void menu(Queue<Integer> fila) {
         System.out.println("");
         System.out.println("─────────────────────────");
@@ -104,7 +104,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Scanner in= new Scanner(System.in);
-        App func= new App();
+        Quest1 func= new Quest1();
         Queue<Integer> fila= new LinkedList<>();
         ArrayList<String> pessoa= new ArrayList<>();
         ArrayList<Integer> senhas= new ArrayList<>();
