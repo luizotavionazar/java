@@ -67,9 +67,7 @@ public class Quest3 {
         while (!fila1.isEmpty() &&
                !fila2.isEmpty()) {
             fila3.offer(fila1.poll());
-            fila2.poll(); //Devido a essa remoção, quando a fila 2 esta vazia e a fila 1 esta preenchida, a fila 3 recebe null, corrigir nao sei como
-            fila3.offer(fila2.poll());
-            fila1.poll(); }
+            fila3.offer(fila2.poll()); }
         
         if (fila1.isEmpty()) {
             do {
