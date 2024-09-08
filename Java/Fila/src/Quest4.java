@@ -4,16 +4,10 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Quest4 {
-    public void ordenacao (int seque, Queue<Integer> fila, Stack<Integer> pilha){
-        if (seque!=1) {
-            
-        }
-    }
     public static void main(String[] args) throws Exception {
         Scanner in= new Scanner(System.in);
         Queue<Integer> fila= new LinkedList<>();
         Stack<Integer> pilha= new Stack<>();
-        Quest4 func= new Quest4();
         boolean control= true;
         String entrada= null;
         int seque= 1, valor= 0;
@@ -35,11 +29,33 @@ public class Quest4 {
             try {
                 valor= Integer.parseInt(entrada);
                 fila.offer(valor);
-                func.ordenacao(seque, fila, pilha);
                 seque++;
             } catch (NumberFormatException e) {
                 System.out.println("");
                 System.out.println("Informe um valor válido!"); }}
+        
+        pilha.push(fila.poll());
+        while (control) {
+            if (pilha.peek()<fila.peek()) {
+                fila.offer(pilha.pop());
 
-    in.close();}
-}
+                if (pilha.isEmpty()) {
+                    pilha.push(fila.poll()); }}
+
+            else {
+                pilha.push(fila.poll()); }
+
+            if (fila.isEmpty()) {
+                break; }}
+        
+        while (!pilha.isEmpty()) {
+            fila.offer(pilha.pop()); }
+        
+        System.out.println("");
+        System.out.println("Fila organizada: ");
+        for (Integer conteudo : fila) {
+            System.out.print(conteudo+" "); }
+        System.out.println("");
+        System.out.println("");
+
+    in.close(); }}
