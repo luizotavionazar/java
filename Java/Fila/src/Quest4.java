@@ -24,7 +24,7 @@ public class Quest4 {
             entrada= in.nextLine();
 
             if (entrada.equalsIgnoreCase("fim")) {
-                break;}
+                break; }
 
             try {
                 valor= Integer.parseInt(entrada);
@@ -53,8 +53,10 @@ public class Quest4 {
         
         System.out.println("");
         System.out.println("Fila organizada: ");
+
         for (Integer conteudo : fila) {
             System.out.print(conteudo+" "); }
+
         System.out.println("");
         System.out.println("");
 

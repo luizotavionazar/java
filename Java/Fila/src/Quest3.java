@@ -24,7 +24,7 @@ public class Quest3 {
             entrada= in.nextLine();
 
             if (entrada.equalsIgnoreCase("fim")) {
-                break;}
+                break; }
 
             try {
                 valor= Integer.parseInt(entrada);
@@ -43,7 +43,7 @@ public class Quest3 {
             entrada= in.nextLine();
 
             if (entrada.equalsIgnoreCase("fim")) {
-                break;}
+                break; }
 
             try {
                 valor= Integer.parseInt(entrada);
@@ -55,13 +55,17 @@ public class Quest3 {
 
         System.out.println("");
         System.out.print("Fila 1: ");
+
         for (Integer conteudo : fila1) {
             System.out.print(conteudo+" "); }
+
         System.out.println("");
 
         System.out.print("Fila 2: ");
+
         for (Integer conteudo : fila2) {
             System.out.print(conteudo+" "); }
+
         System.out.println("");
 
         while (!fila1.isEmpty() &&
